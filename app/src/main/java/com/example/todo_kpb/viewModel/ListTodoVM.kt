@@ -1,6 +1,7 @@
 package com.example.todo_kpb.viewModel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.todo_kpb.model.Todo
@@ -26,6 +27,14 @@ class ListTodoVM(application: Application):AndroidViewModel(application),Corouti
         errorStatus.value = false
         launch {
             val db = buildDb(getApplication())
+            todos.postValue(db.todoDao().selectAllTodo())
+        }
+    }
+    fun updateTodoCheck(isDone:Boolean,uuid:Int){
+        launch {
+            Log.d("Update TODO","CHECKED!!!")
+            val db = buildDb(getApplication())
+            db.todoDao().updateTodoCheck(!isDone,uuid)
             todos.postValue(db.todoDao().selectAllTodo())
         }
     }

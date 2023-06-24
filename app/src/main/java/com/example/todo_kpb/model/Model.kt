@@ -11,7 +11,9 @@ data class Todo(
     @ColumnInfo("notes")
     var notes:String,
     @ColumnInfo("priority")
-    var priority:Int
+    var priority:Int,
+    @ColumnInfo("is_done")
+    var isDone:Boolean,
 )
 {
     @PrimaryKey(true)
