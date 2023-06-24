@@ -15,7 +15,7 @@ val MIGRATION_1_2 = object:Migration(1,2){
 }
 val MIGRATION_2_3 = object:Migration(2,3){
     override fun migrate(database: SupportSQLiteDatabase) {
-        database.execSQL("ALTER TABLE todo ADD COLUMN is_done INTEGER DEFAULT 0 not null");
+        database.execSQL("ALTER TABLE todo ADD COLUMN is_done INTEGER DEFAULT 0 not null"); // Karena SQLite tidak support boolean sehingga Room secara otomatis akan mengubah true menjadi 1 dan false menjadi 0 serta sebaliknya
     }
 }
 fun buildDb(context: Context):TodoDatabase{
