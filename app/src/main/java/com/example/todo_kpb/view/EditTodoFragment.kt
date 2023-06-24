@@ -1,4 +1,4 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.todo_kpb.R
-import com.example.todo_kpb.ViewModel.DetailTodoVM
+import com.example.todo_kpb.viewModel.DetailTodoVM
 
 class EditTodoFragment : Fragment() {
     private  lateinit var viewModel:DetailTodoVM

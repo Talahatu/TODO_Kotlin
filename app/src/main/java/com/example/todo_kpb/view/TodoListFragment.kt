@@ -1,4 +1,4 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,7 +12,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todo_kpb.R
-import com.example.todo_kpb.ViewModel.ListTodoVM
+import com.example.todo_kpb.viewModel.ListTodoVM
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TodoListFragment : Fragment() {

@@ -1,10 +1,10 @@
-package com.example.todo_kpb.ViewModel
+package com.example.todo_kpb.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.todo_kpb.model.Todo
-import com.example.todo_kpb.Util.buildDb
+import com.example.todo_kpb.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

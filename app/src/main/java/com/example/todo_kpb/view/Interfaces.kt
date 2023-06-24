@@ -1,4 +1,4 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
 import android.view.View
 import android.widget.CompoundButton

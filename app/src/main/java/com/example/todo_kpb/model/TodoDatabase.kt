@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.todo_kpb.Util.MIGRATION_1_2
+import com.example.todo_kpb.util.MIGRATION_1_2
 
 @Database(entities=[Todo::class], version = 2)
 abstract class TodoDatabase:RoomDatabase() {

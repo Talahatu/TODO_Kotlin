@@ -1,4 +1,4 @@
-package com.example.todo_kpb.Util
+package com.example.todo_kpb.util
 
 import android.content.Context
 import androidx.room.Room

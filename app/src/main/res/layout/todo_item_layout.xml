@@ -9,10 +9,10 @@
             type="com.example.todo_kpb.model.Todo" />
         <variable
             name="listener"
-            type="com.example.todo_kpb.View.TodoCheckedChangeListener" />
+            type="com.example.todo_kpb.view.TodoCheckedChangeListener" />
         <variable
             name="editListener"
-            type="com.example.todo_kpb.View.TodoEditClick" />
+            type="com.example.todo_kpb.view.TodoEditClick" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,11 +23,11 @@
             android:id="@+id/imgEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:tag="@{todo.uuid}"
+            android:layout_marginEnd="16dp"
             android:onClick="@{editListener::onTodoEditClick}"
+            android:tag="@{todo.uuid}"
             app:layout_constraintBottom_toBottomOf="@+id/checkTask"
-            app:layout_constraintEnd_toEndOf="@+id/checkTask"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/checkTask"
             app:srcCompat="@drawable/baseline_edit_24" />
 
@@ -36,14 +36,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:text="@{todo.title}"
             android:onCheckedChanged="@{(cb,isChecked)->listener.onCheckChange(cb,isChecked,todo)}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/imgEdit"
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

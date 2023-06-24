@@ -1,4 +1,4 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

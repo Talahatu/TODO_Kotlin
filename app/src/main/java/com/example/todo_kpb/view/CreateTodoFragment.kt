@@ -1,4 +1,4 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +12,15 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.workDataOf
 import com.example.todo_kpb.model.Todo
 import com.example.todo_kpb.R
-import com.example.todo_kpb.ViewModel.DetailTodoVM
+import com.example.todo_kpb.util.NotificationHelper
+import com.example.todo_kpb.util.TodoWorker
+import com.example.todo_kpb.viewModel.DetailTodoVM
+import java.util.concurrent.TimeUnit
 
 class CreateTodoFragment : Fragment() {
     private lateinit var viewModel:DetailTodoVM
@@ -31,7 +37,12 @@ class CreateTodoFragment : Fragment() {
             var todo = Todo(txxTitle.text.toString(),txtNotes.text.toString(),radio.tag.toString().toInt())
             val list = listOf(todo)
             viewModel.addTodo(list)
-            Toast.makeText(view.context,"Data Added",Toast.LENGTH_LONG).show()
+
+            val myWorkRequest = OneTimeWorkRequestBuilder<TodoWorker>()
+                .setInitialDelay(10,TimeUnit.SECONDS)
+                .setInputData(workDataOf("title" to "Todo Created","message" to "Todo successfully added!"))
+                .build()
+            WorkManager.getInstance(requireContext()).enqueue(myWorkRequest)
             Navigation.findNavController(it).popBackStack()
         }
     }

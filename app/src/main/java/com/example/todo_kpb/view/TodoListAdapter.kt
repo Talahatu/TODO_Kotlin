@@ -1,11 +1,10 @@
-package com.example.todo_kpb.View
+package com.example.todo_kpb.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
 import android.widget.CompoundButton
-import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -27,19 +26,9 @@ class TodoListAdapter(val todoList:ArrayList<Todo>,val adapterOnClick:(Todo)->Un
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-//        var checktask = holder.view.findViewById<CheckBox>(R.id.checkTask)
-//        checktask.text = todoList[position].title
-//        checktask.setOnCheckedChangeListener{ _, isChecked->
-//            if(isChecked) adapterOnClick(todoList[position])
-//        }
-//        var pencilEdit = holder.view.findViewById<ImageView>(R.id.imgEdit)
-//        pencilEdit.bringToFront()
-//        pencilEdit.setOnClickListener {
-//            Navigation.findNavController(it).navigate( TodoListFragmentDirections.actionTodoListFragmentToEditTodoFragment(todoList[position].uuid))
-//        }
-//        holder.view.todo = todoList[position]
-       // holder.view.listener = this
-       // holder.view.editListener = this
+        holder.view.todo = todoList[position]
+        holder.view.listener = this
+        holder.view.editListener = this
     }
     fun updateTodoList(newTodoList:List<Todo>){
         todoList.clear()
@@ -48,12 +37,14 @@ class TodoListAdapter(val todoList:ArrayList<Todo>,val adapterOnClick:(Todo)->Un
     }
 
     override fun onCheckChange(cb: CompoundButton, isChecked: Boolean, obj: Todo) {
+        Log.d("Check Change","Change Success!")
         if(isChecked){
             adapterOnClick(obj)
         }
     }
 
     override fun onTodoEditClick(v: View) {
+        Log.d("Edit Click","Click Success!")
         val uuid = v.tag.toString().toInt()
         val action = TodoListFragmentDirections.actionTodoListFragmentToEditTodoFragment(uuid)
         Navigation.findNavController(v).navigate(action)
